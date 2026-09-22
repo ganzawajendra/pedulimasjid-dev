@@ -42,10 +42,10 @@ export default function Navbar() {
         <a href="" className="hover:text-black transition-colors">
           Kampanye
         </a>
-        <a href="" className="hover:text-black transition-colors">
+        <a href="#howItWorks" className="hover:text-black transition-colors">
           Cara Kerja
         </a>
-        <a href="" className="hover:text-black transition-colors">
+        <a href="#showcaseTechnology" className="hover:text-black transition-colors">
           Fitur Integritas
         </a>
         <a href="" className="hover:text-black transition-colors">

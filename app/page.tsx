@@ -1,8 +1,13 @@
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import Link from "next/link";
+import { ChevronDown, ScanEye, ShieldCheck, ArrowRight } from "lucide-react";
 import SocialProofStripCard from "@/components/social-proof-strip-card";
 import ProblemSolutionCard from "@/components/problem-solution-card";
+import TechnologyCard from "@/components/technology-card";
+import CampaignCard from "@/components/campaign-card";
+import TakmirRegistrationForm from "@/components/takmir-registration-form";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -54,7 +59,7 @@ export default function Home() {
       </div>
 
       {/* Description */}
-      <div className="flex items-center justify-center text-center h-60 border-b-1 border-slate-400">
+      <div className="flex items-center justify-center text-center py-10">
         <div className="w-200 flex flex-col items-end gap-5">
           <p>
             &quot;Mengubah paradigma penggalangan dana fisik konvensional menjadi
@@ -80,10 +85,10 @@ export default function Home() {
 
       {/* Problem & Solution */}
       <div className="flex flex-col items-center justify-center px-30 py-10 border-b-1 border-slate-400">
-        <h3 className="text-2xl font-semibold">
+        <h3 className="text-2xl font-semibold mb-12">
           Menjawab Krisis Kepercayaan dalam Penggalangan Dana Konvensional
         </h3>
-        <div className="flex gap-10 mt-10">
+        <div className="flex gap-10">
           <ProblemSolutionCard
             id="problem"
             title="Tantangan Konvensional"
@@ -106,7 +111,7 @@ export default function Home() {
       </div>
 
       {/* How it Works */}
-      <div className="flex flex-col items-center justify-center px-30 py-10">
+      <div id="howItWorks" className="flex flex-col items-center justify-center px-30 py-10 border-b-1 border-slate-400">
         <h3 className="text-2xl font-semibold mb-12">
           Cara Kerja
         </h3>
@@ -172,6 +177,88 @@ export default function Home() {
           })}
         </div>
       </div>
+
+      {/* Showcase Technology */}
+      <div id="showcaseTechnology" className="flex flex-col items-center justify-center px-30 py-10 border-b-1 border-slate-400">
+        <h3 className="text-2xl font-semibold mb-12">
+          Fitur Integritas
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
+          <TechnologyCard
+            badge="Computer Vision Layer"
+            icon={<ScanEye className="w-6 h-6" />}
+            title="Verifikasi Kerusakan Fisik berbasis CNN"
+            description="Mengeliminasi manipulasi proposal fiktif. Arsitektur Deep Learning mengekstraksi fitur struktural retak, keropos, atau kebocoran bangunan guna memastikan bantuan tepat sasaran."
+            keyFeatures="Deteksi multi-level kerusakan, ekstraksi fitur visual otomatis, tanpa bias manusia."
+          />
+          <TechnologyCard
+            badge="Data Integrity Layer"
+            icon={<ShieldCheck className="w-6 h-6" />}
+            title="Mutasi Kas Anti-Manipulasi (Cryptographic Hash Chain)"
+            description="Mengadopsi prinsip rantai blok ringan tanpa biaya gas fee. Mengaitkan hash transaksi sebelumnya dengan transaksi baru sehingga manipulasi data pada basis data akan otomatis memutus rantai integritas (broken chain)."
+            keyFeatures="Integritas matematis SHA-256, checksum nota pengeluaran fisik, verifikasi mandiri publik satu klik."
+          />
+        </div>
+      </div>
+
+      {/* Featured Campaign Active */}
+      <div id="kampanye" className="flex flex-col items-center justify-center px-30 py-16 border-b-1 border-slate-400">
+        <div className="flex items-center justify-between w-full max-w-6xl mb-12">
+          <h3 className="text-2xl font-semibold">
+            Kampanye Aktif
+          </h3>
+          <Link
+            href="/campaigns"
+            className="inline-flex items-center gap-2 border border-neutral-300 bg-white hover:bg-neutral-100 text-neutral-900 font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors shadow-xs"
+          >
+            <span>Lihat Selengkapnya</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
+          <CampaignCard
+            imageSrc="/bg-masjid.jpg"
+            badgeText="Terverifikasi: Rusak Berat"
+            title="Renovasi Atap Kubah & Dinding Utama Masjid Al-Muhajirin"
+            location="Kab. Sleman, D.I. Yogyakarta"
+            collectedAmount={18500000}
+            targetAmount={35000000}
+            slug="masjid-al-muhajirin"
+          />
+          <CampaignCard
+            imageSrc="/bg-masjid.jpeg"
+            badgeText="Terverifikasi: Rusak Sedang"
+            title="Perbaikan Struktur Menara & Tempat Wudhu Masjid Jami' An-Nur"
+            location="Kota Bandung, Jawa Barat"
+            collectedAmount={12400000}
+            targetAmount={28000000}
+            slug="masjid-jami-an-nur"
+          />
+          <CampaignCard
+            imageSrc="/bg-masjid.jpg"
+            badgeText="Terverifikasi: Rusak Berat"
+            title="Restorasi Plafon Retak & Sanitasi Utama Masjid Baiturrahman"
+            location="Kab. Malang, Jawa Timur"
+            collectedAmount={24750000}
+            targetAmount={40000000}
+            slug="masjid-baiturrahman"
+          />
+        </div>
+      </div>
+
+      {/* Ask for Renovation */}
+      <div id="daftar-takmir" className="flex flex-col items-center justify-center px-6 md:px-30 py-16">
+        <h3 className="text-2xl font-semibold mb-3 text-center">
+          Daftar Sebagai Takmir
+        </h3>
+        <p className="text-sm text-neutral-500 max-w-lg text-center mb-10 leading-relaxed">
+          Daftarkan masjid Anda untuk mendapatkan verifikasi kondisi kerusakan fisik objektif dan pembukaan penggalangan dana renovasi yang akuntabel.
+        </p>
+        <TakmirRegistrationForm />
+      </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

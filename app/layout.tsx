@@ -16,7 +16,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.className} h-full antialiased`}
+      className={`${inter.className} h-full antialiased scroll-smooth`}
     >
       <body className={`${inter.className} min-h-full flex flex-col`}>
         {children}
