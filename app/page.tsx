@@ -2,29 +2,13 @@ import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import SocialProofStripCard from "@/components/social-proof-strip-card";
 import ProblemSolutionCard from "@/components/problem-solution-card";
+import Navbar from "@/components/navbar";
 
 export default function Home() {
   return (
     <div>
       {/* Navbar */}
-      <nav className="border-b-1 h-[64px] flex items-center justify-between px-20 hidden">
-        <Image
-          src="/logo-black.png"
-          width={110}
-          height={62}
-          alt="Logo Peduli Masjid Dark"
-          className="w-[110px] h-auto"
-        />
-        <div className="nav-menu flex items-center gap-10">
-          <a href="">Kampanye</a>
-          <a href="">Cara Kerja</a>
-          <a href="">Fitur Integritas</a>
-          <a href="">Audit & Transparansi</a>
-        </div>
-        <div className="action bg-black text-[var(--background)] px-3 py-1 rounded">
-          <a href="">Masuk</a>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center">
@@ -95,7 +79,7 @@ export default function Home() {
       </div>
 
       {/* Problem & Solution */}
-      <div className="flex flex-col items-center justify-center mx-30">
+      <div className="flex flex-col items-center justify-center px-30 py-10 border-b-1 border-slate-400">
         <h3 className="text-2xl font-semibold">
           Menjawab Krisis Kepercayaan dalam Penggalangan Dana Konvensional
         </h3>
@@ -118,6 +102,74 @@ export default function Home() {
               "Ledger Mutasi Tamper-Evident: Rantai hash kriptografis memastikan histori uang keluar dan nota belanja tidak bisa dipalsukan sepihak.",
             ]}
           />
+        </div>
+      </div>
+
+      {/* How it Works */}
+      <div className="flex flex-col items-center justify-center px-30 py-10">
+        <h3 className="text-2xl font-semibold mb-12">
+          Cara Kerja
+        </h3>
+        <div className="w-full max-w-4xl flex flex-col">
+          {[
+            {
+              step: "Langkah 1",
+              number: 1,
+              title: "Pengajuan & Analisis Visual Otomatis",
+              description:
+                "Pengurus takmir mengunggah foto kondisi fisik bangunan masjid yang membutuhkan renovasi. Model CNN secara otomatis menganalisis pola kerusakan dan menentukan kelayakan pembukaan kampanye.",
+            },
+            {
+              step: "Langkah 2",
+              number: 2,
+              title: "Penghimpunan Donasi Aman",
+              description:
+                "Donatur menyalurkan dana untuk kampanye yang telah tervalidasi. Setiap donasi masuk dicatat langsung sebagai blok transaksi baru di dalam sistem ledger.",
+            },
+            {
+              step: "Langkah 3",
+              number: 3,
+              title: "Pencairan Dana & Audit Kriptografis",
+              description:
+                "Setiap penarikan kas untuk belanja material semen atau atap wajib menyertakan foto nota fisik. Berkas nota dan transaksi diikat ke dalam rantai hash (SHA-256) yang dapat diverifikasi mandiri oleh siapa pun.",
+            },
+          ].map((item, index, arr) => {
+            const isLast = index === arr.length - 1;
+            return (
+              <div key={item.number} className="flex items-stretch gap-8">
+                {/* Konten Kiri */}
+                <div className="flex-1 text-right pt-1.5">
+                  <span className="font-bold text-neutral-800">
+                    {item.step}
+                  </span>
+                </div>
+
+                {/* Tengah: Nomor & Garis Putus-putus */}
+                <div className="flex flex-col items-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-neutral-900 text-white flex items-center justify-center font-bold text-sm shadow-sm ring-4 ring-neutral-100 shrink-0">
+                    {item.number}
+                  </div>
+                  {!isLast && (
+                    <div className="w-0 flex-1 border-l-2 border-dashed border-neutral-400 my-2 min-h-16" />
+                  )}
+                </div>
+
+                {/* Konten Kanan: Penjelasan */}
+                <div
+                  className={`flex-1 text-left pt-1.5 ${
+                    isLast ? "pb-4" : "pb-12"
+                  }`}
+                >
+                  <h4 className="font-semibold text-neutral-900">
+                    {item.title}
+                  </h4>
+                  <p className="text-neutral-600 mt-2 leading-relaxed text-sm">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
