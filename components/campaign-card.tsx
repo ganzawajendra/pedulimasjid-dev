@@ -14,6 +14,7 @@ export interface CampaignCardProps {
 }
 
 export default function CampaignCard({
+  id,
   imageSrc,
   badgeText = "Terverifikasi: Rusak Berat",
   title,
@@ -34,6 +35,8 @@ export default function CampaignCard({
       maximumFractionDigits: 0,
     }).format(num);
   };
+
+  const campaignId = id ?? slug;
 
   return (
     <div className="flex flex-col bg-neutral-50 border border-neutral-300 rounded-xl overflow-hidden shadow-xs hover:shadow-md transition-all">
@@ -85,13 +88,13 @@ export default function CampaignCard({
         {/* Tombol Aksi */}
         <div className="flex items-center gap-2 pt-2 border-t border-neutral-200">
           <Link
-            href={slug ? `/campaigns/${slug}` : "/campaigns"}
+            href={campaignId ? `/campaigns/${campaignId}` : "/campaigns"}
             className="flex-1 bg-black text-white text-xs font-medium py-2.5 px-3 rounded-md text-center hover:bg-neutral-800 transition-colors"
           >
             Beri Donasi
           </Link>
           <Link
-            href={slug ? `/campaigns/${slug}/audit` : "#audit"}
+            href={campaignId ? `/campaigns/${campaignId}/audit` : "#audit"}
             className="flex-1 border border-neutral-300 bg-white text-neutral-800 text-xs font-medium py-2.5 px-3 rounded-md text-center hover:bg-neutral-100 transition-colors"
           >
             Lihat Audit Mutasi

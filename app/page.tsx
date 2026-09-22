@@ -6,15 +6,11 @@ import ProblemSolutionCard from "@/components/problem-solution-card";
 import TechnologyCard from "@/components/technology-card";
 import CampaignCard from "@/components/campaign-card";
 import TakmirRegistrationForm from "@/components/takmir-registration-form";
-import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
 export default function Home() {
   return (
     <div>
-      {/* Navbar */}
-      <Navbar />
-
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center">
         {/* Gambar Background Fullscreen */}
@@ -217,31 +213,31 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
           <CampaignCard
+            id="1"
             imageSrc="/bg-masjid.jpg"
             badgeText="Terverifikasi: Rusak Berat"
             title="Renovasi Atap Kubah & Dinding Utama Masjid Al-Muhajirin"
             location="Kab. Sleman, D.I. Yogyakarta"
             collectedAmount={18500000}
             targetAmount={35000000}
-            slug="masjid-al-muhajirin"
           />
           <CampaignCard
+            id="2"
             imageSrc="/bg-masjid.jpeg"
             badgeText="Terverifikasi: Rusak Sedang"
             title="Perbaikan Struktur Menara & Tempat Wudhu Masjid Jami' An-Nur"
             location="Kota Bandung, Jawa Barat"
             collectedAmount={12400000}
             targetAmount={28000000}
-            slug="masjid-jami-an-nur"
           />
           <CampaignCard
+            id="3"
             imageSrc="/bg-masjid.jpg"
             badgeText="Terverifikasi: Rusak Berat"
             title="Restorasi Plafon Retak & Sanitasi Utama Masjid Baiturrahman"
             location="Kab. Malang, Jawa Timur"
             collectedAmount={24750000}
             targetAmount={40000000}
-            slug="masjid-baiturrahman"
           />
         </div>
       </div>
@@ -256,9 +252,6 @@ export default function Home() {
         </p>
         <TakmirRegistrationForm />
       </div>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
