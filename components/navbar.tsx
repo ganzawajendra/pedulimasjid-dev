@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,18 +40,18 @@ export default function Navbar() {
         className="w-[110px] h-auto"
       />
       <div className="nav-menu flex items-center gap-10 text-sm font-medium text-neutral-700">
-        <a href="" className="hover:text-black transition-colors">
+        <Link href="/campaigns" className="hover:text-black transition-colors">
           Kampanye
-        </a>
-        <a href="#howItWorks" className="hover:text-black transition-colors">
+        </Link>
+        <a href="#how-it-works" className="hover:text-black transition-colors">
           Cara Kerja
         </a>
-        <a href="#showcaseTechnology" className="hover:text-black transition-colors">
+        <a href="#showcase-technology" className="hover:text-black transition-colors">
           Fitur Integritas
         </a>
-        <a href="" className="hover:text-black transition-colors">
+        <Link href="" className="hover:text-black transition-colors">
           Audit & Transparansi
-        </a>
+        </Link>
       </div>
       <div className="action bg-black text-white px-4 py-1.5 rounded hover:bg-neutral-800 transition-colors text-sm font-medium">
         <a href="">Masuk</a>

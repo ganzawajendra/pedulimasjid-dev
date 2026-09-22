@@ -229,7 +229,7 @@ export default function TakmirRegistrationForm() {
                     : "bg-neutral-200 text-neutral-400 cursor-not-allowed"
                 }`}
               >
-                <span>Lanjut: Profil Rumah Ibadah</span>
+                <span>Lanjut</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

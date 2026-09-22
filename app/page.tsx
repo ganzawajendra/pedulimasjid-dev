@@ -47,7 +47,7 @@ export default function Home() {
               <a href="" className="bg-white text-black px-5 py-2 rounded">
                 Jelajahi Kampanye
               </a>
-              <a href="">
+              <a href="#daftar-takmir">
                 <div className="flex px-5 py-2 gap-2">
                   <p>Ajukan Renovasi</p>
                   <ChevronDown />
@@ -73,7 +73,7 @@ export default function Home() {
       </div>
 
       {/* Social Proof Strip */}
-      <div className="py-10 flex items-center justify-evenly">
+      <div className="py-10 px-30 flex items-center justify-between">
         {/* Card */}
         <SocialProofStripCard main="100%" secondary="Otomatis" />
         <SocialProofStripCard main="SHA-256" secondary="Tamper-Evident" />
@@ -111,7 +111,7 @@ export default function Home() {
       </div>
 
       {/* How it Works */}
-      <div id="howItWorks" className="flex flex-col items-center justify-center px-30 py-10 border-b-1 border-slate-400">
+      <div id="how-it-works" className="flex flex-col items-center justify-center px-30 py-10 border-b-1 border-slate-400">
         <h3 className="text-2xl font-semibold mb-12">
           Cara Kerja
         </h3>
@@ -179,7 +179,7 @@ export default function Home() {
       </div>
 
       {/* Showcase Technology */}
-      <div id="showcaseTechnology" className="flex flex-col items-center justify-center px-30 py-10 border-b-1 border-slate-400">
+      <div id="showcase-technology" className="flex flex-col items-center justify-center px-30 py-10 border-b-1 border-slate-400">
         <h3 className="text-2xl font-semibold mb-12">
           Fitur Integritas
         </h3>
