@@ -8,14 +8,14 @@ export default function TakmirRegistrationForm() {
   const router = useRouter();
   const [step, setStep] = useState<1 | 2>(1);
 
-  // Form State - Step 1: Data Pengurus
   const [formData, setFormData] = useState({
+    // Form Step 1 -> Data Pengurus
     fullName: "",
     position: "",
     phone: "",
     email: "",
     password: "",
-    // Form State - Step 2: Profil Rumah Ibadah
+    // Form Step 2 -> Profil Rumah Ibadah
     mosqueName: "",
     city: "",
     address: "",
@@ -30,7 +30,7 @@ export default function TakmirRegistrationForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Validasi Step 1: Semua field harus terisi
+  // Validasi Semua field harus terisi
   const isStep1Valid =
     formData.fullName.trim() !== "" &&
     formData.position !== "" &&
@@ -38,7 +38,7 @@ export default function TakmirRegistrationForm() {
     formData.email.trim() !== "" &&
     formData.password.trim() !== "";
 
-  // Validasi Step 2: Semua field profil masjid harus terisi
+  // Validasi Semua field profil masjid harus terisi
   const isStep2Valid =
     formData.mosqueName.trim() !== "" &&
     formData.city.trim() !== "" &&
@@ -60,44 +60,31 @@ export default function TakmirRegistrationForm() {
     <div className="w-full max-w-2xl bg-neutral-50 border border-neutral-300 rounded-2xl p-6 md:p-8 shadow-xs">
       {/* Stepper Header */}
       <div className="flex items-center justify-between border-b border-neutral-200 pb-5 mb-6">
-        <div
-          className={`flex items-center gap-3 transition-colors ${
-            step === 1 ? "text-neutral-900 font-semibold" : "text-neutral-500"
-          }`}
-        >
-          <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
-              step === 1
-                ? "bg-black text-white"
+        {/* Step 1 -> Data Pengurus */}
+        <div className={`flex items-center gap-3 transition-colors ${step === 1 ? "text-neutral-900 font-semibold" : "text-neutral-500"}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${step === 1 ? "bg-black text-white"
                 : isStep1Valid
                 ? "bg-green-600 text-white"
                 : "bg-neutral-200 text-neutral-600"
-            }`}
-          >
+            }`}>
             {isStep1Valid && step === 2 ? <CheckCircle2 className="w-4 h-4" /> : "1"}
           </div>
           <div className="text-left">
-            <p className="text-xs uppercase tracking-wider text-neutral-400 font-semibold">
-              Langkah 1
-            </p>
-            <p className="text-sm font-medium">Data Pengurus</p>
+            <p className="text-xs uppercase tracking-wider text-neutral-400 font-semibold">Langkah 1</p>
+            <p className="text-sm font-medium">Data Takmir</p>
           </div>
         </div>
 
-        <div className="h-0.5 w-12 bg-neutral-200 hidden sm:block" />
+        <div className="h-0.5 w-12 bg-neutral-600 hidden sm:block" />
 
-        <div
-          className={`flex items-center gap-3 transition-colors ${
-            step === 2 ? "text-neutral-900 font-semibold" : "text-neutral-500"
-          }`}
-        >
+        {/* Step 2 -> Profil Rumah Ibadah */}
+        <div className={`flex items-center gap-3 transition-colors ${step === 2 ? "text-neutral-900 font-semibold" : "text-neutral-500"}`}>
           <div
             className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
               step === 2
                 ? "bg-black text-white"
                 : "bg-neutral-200 text-neutral-600"
-            }`}
-          >
+            }`}>
             2
           </div>
           <div className="text-left">
@@ -108,20 +95,20 @@ export default function TakmirRegistrationForm() {
           </div>
         </div>
       </div>
-
+      
+      {/* Form Data Takmir dan Rumah Ibadah */}
       <form onSubmit={handleSubmit} className="space-y-5">
-        {/* ================= STEP 1: Data Pengurus ================= */}
+        {/* Form Data Takmir */}
         {step === 1 && (
           <div className="space-y-4 animate-fadeIn">
-            <div className="flex items-center gap-2 pb-2 text-neutral-800">
-              <UserCheck className="w-5 h-5 text-neutral-700" />
+            <div className="flex items-center justify-center gap-2 pb-2 text-neutral-800">
+              <UserCheck className="w-5 h-5 text-black" />
               <h4 className="font-semibold text-base">Identitas &amp; Akun Takmir</h4>
             </div>
-
-            {/* 1. Nama Lengkap Pengurus */}
-            <div>
+            {/* Nama Lengkap Takmir */}
+            <div className="mb-6">
               <label className="block text-xs font-semibold text-neutral-800 mb-1">
-                Nama Lengkap Pengurus <span className="text-red-500">*</span>
+                Nama Lengkap Takmir <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -137,8 +124,8 @@ export default function TakmirRegistrationForm() {
               </p>
             </div>
 
-            {/* 2. Jabatan Kepengurusan */}
-            <div>
+            {/* Jabatan Kepengurusan */}
+            <div className="mb-6">
               <label className="block text-xs font-semibold text-neutral-800 mb-1">
                 Jabatan Kepengurusan <span className="text-red-500">*</span>
               </label>
@@ -155,13 +142,10 @@ export default function TakmirRegistrationForm() {
                 <option value="Bendahara">Bendahara</option>
                 <option value="Ketua Panitia Pembangunan">Ketua Panitia Pembangunan</option>
               </select>
-              <p className="text-xs text-neutral-500 mt-1">
-                Memastikan pendaftar memiliki kapasitas struktural di masjid bersangkutan.
-              </p>
             </div>
 
-            {/* 3. Nomor WhatsApp / HP */}
-            <div>
+            {/* Nomor WhatsApp / HP */}
+            <div className="mb-6">
               <label className="block text-xs font-semibold text-neutral-800 mb-1">
                 Nomor WhatsApp / HP Aktif <span className="text-red-500">*</span>
               </label>
@@ -174,13 +158,10 @@ export default function TakmirRegistrationForm() {
                 className="w-full px-3.5 py-2.5 bg-white border border-neutral-300 rounded-lg text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-black"
                 required
               />
-              <p className="text-xs text-neutral-500 mt-1">
-                Jalur konfirmasi cepat jika ada laporan anomali mutasi atau verifikasi lapangan.
-              </p>
             </div>
 
-            {/* 4. Alamat Email */}
-            <div>
+            {/* Alamat Email */}
+            <div className="mb-6">
               <label className="block text-xs font-semibold text-neutral-800 mb-1">
                 Alamat Email <span className="text-red-500">*</span>
               </label>
@@ -198,8 +179,8 @@ export default function TakmirRegistrationForm() {
               </p>
             </div>
 
-            {/* 5. Kata Sandi (Password) */}
-            <div>
+            {/* Kata Sandi (Password) */}
+            <div className="mb-6">
               <label className="block text-xs font-semibold text-neutral-800 mb-1">
                 Kata Sandi (Password) <span className="text-red-500">*</span>
               </label>
@@ -212,12 +193,9 @@ export default function TakmirRegistrationForm() {
                 className="w-full px-3.5 py-2.5 bg-white border border-neutral-300 rounded-lg text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-black"
                 required
               />
-              <p className="text-xs text-neutral-500 mt-1">
-                Kredensial keamanan akun (di-hash dengan bcrypt sebelum masuk database).
-              </p>
             </div>
 
-            {/* Tombol Lanjut Step 1 */}
+            {/* Tombol Lanjut ke Step 2 */}
             <div className="pt-3">
               <button
                 type="button"
@@ -236,16 +214,16 @@ export default function TakmirRegistrationForm() {
           </div>
         )}
 
-        {/* ================= STEP 2: Profil Rumah Ibadah ================= */}
+        {/* Form Profil Rumah Ibadah */}
         {step === 2 && (
           <div className="space-y-4 animate-fadeIn">
-            <div className="flex items-center gap-2 pb-2 text-neutral-800">
+            <div className="flex items-center justify-center gap-2 pb-2 text-neutral-800">
               <Building2 className="w-5 h-5 text-neutral-700" />
               <h4 className="font-semibold text-base">Profil &amp; Rekening Rumah Ibadah</h4>
             </div>
 
-            {/* 1. Nama Rumah Ibadah */}
-            <div>
+            {/* Nama Rumah Ibadah */}
+            <div className="mb-6">
               <label className="block text-xs font-semibold text-neutral-800 mb-1">
                 Nama Rumah Ibadah <span className="text-red-500">*</span>
               </label>
@@ -263,8 +241,8 @@ export default function TakmirRegistrationForm() {
               </p>
             </div>
 
-            {/* 2. Kabupaten / Kota */}
-            <div>
+            {/* Kabupaten / Kota */}
+            <div className="mb-6">
               <label className="block text-xs font-semibold text-neutral-800 mb-1">
                 Kabupaten / Kota <span className="text-red-500">*</span>
               </label>
@@ -282,8 +260,8 @@ export default function TakmirRegistrationForm() {
               </p>
             </div>
 
-            {/* 3. Alamat Lengkap */}
-            <div>
+            {/* Alamat Lengkap */}
+            <div className="mb-6">
               <label className="block text-xs font-semibold text-neutral-800 mb-1">
                 Alamat Lengkap <span className="text-red-500">*</span>
               </label>
@@ -301,10 +279,10 @@ export default function TakmirRegistrationForm() {
               </p>
             </div>
 
-            {/* 4. Informasi Rekening Operasional Masjid */}
-            <div>
+            {/* Informasi Rekening */}
+            <div className="mb-6">
               <label className="block text-xs font-semibold text-neutral-800 mb-1">
-                Informasi Rekening Operasional Masjid <span className="text-red-500">*</span>
+                Informasi Rekening <span className="text-red-500">*</span>
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <select
@@ -337,6 +315,7 @@ export default function TakmirRegistrationForm() {
 
             {/* Tombol Aksi Step 2 */}
             <div className="flex items-center gap-3 pt-3">
+              {/* Kembali ke Step 1 */}
               <button
                 type="button"
                 onClick={() => setStep(1)}
@@ -346,6 +325,7 @@ export default function TakmirRegistrationForm() {
                 <span>Kembali</span>
               </button>
 
+              {/* Submit */}
               <button
                 type="submit"
                 disabled={!isStep2Valid}

@@ -32,7 +32,7 @@ export default function ProblemSolutionCard({
           <h4 className="text-lg font-semibold text-neutral-900">{title}</h4>
         </div>
         {list ? (
-          <ul className="pl-6 list-disc space-y-2.5 text-sm text-neutral-600 leading-relaxed">
+          <ul className="pl-10 list-disc space-y-2.5 text-sm text-neutral-600 leading-relaxed">
             {list.map((item, index) => (
               <li key={index}>{item}</li>
             ))}

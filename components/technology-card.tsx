@@ -26,9 +26,9 @@ export default function TechnologyCard({
           <span className="text-xs font-semibold px-3 py-1 bg-black text-white rounded-full">
             {badge}
           </span>
-          {icon && <div className="text-neutral-700">{icon}</div>}
+          {icon && <div className="text-black">{icon}</div>}
         </div>
-        <h4 className="text-xl font-semibold text-neutral-900 mb-3">
+        <h4 className="text-lg font-semibold text-neutral-900 mb-3">
           {title}
         </h4>
         <p className="text-neutral-600 text-sm leading-relaxed mb-6">
@@ -36,7 +36,7 @@ export default function TechnologyCard({
         </p>
       </div>
 
-      <div className="border-t border-neutral-200 pt-4 mt-2">
+      <div className="border-t border-neutral-300 pt-4 mt-2">
         <p className="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-1">
           Fitur Kunci
         </p>

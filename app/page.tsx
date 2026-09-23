@@ -1,14 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, ScanEye, ShieldCheck, ArrowRight } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import SocialProofStripCard from "@/components/social-proof-strip-card";
 import ProblemSolutionCard from "@/components/problem-solution-card";
 import TechnologyCard from "@/components/technology-card";
 import CampaignCard from "@/components/campaign-card";
 import TakmirRegistrationForm from "@/components/takmir-registration-form";
-import Footer from "@/components/footer";
+import {HOW_IT_WORKS} from "@/constants/how-it-works";
+import {SHOWCASE_TECHNOLOGY} from "@/constants/showcase-technology"
+import {DUMMY_CAMPAIGNS} from "@/datas/dummy-campaigns"
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
@@ -40,11 +42,11 @@ export default function Home() {
               Salurkan Kebaikan Berbasis Bukti Nyata, Bebas Manipulasi.
             </h1>
             <div className="gap-10 flex justify-center ">
-              <a href="" className="bg-white text-black px-5 py-2 rounded">
+              <Link href="/campaigns" className="bg-white text-black px-5 py-2 rounded text-base">
                 Jelajahi Kampanye
-              </a>
+              </Link>
               <a href="#daftar-takmir">
-                <div className="flex px-5 py-2 gap-2">
+                <div className="flex px-5 py-2 gap-2 bg-black/50 rounded text-base">
                   <p>Ajukan Renovasi</p>
                   <ChevronDown />
                 </div>
@@ -57,12 +59,12 @@ export default function Home() {
       {/* Description */}
       <div className="flex items-center justify-center text-center py-10">
         <div className="w-200 flex flex-col items-end gap-5">
-          <p>
+          <p className="text-base">
             &quot;Mengubah paradigma penggalangan dana fisik konvensional menjadi
             ekosistem digital yang akuntabel. Setiap proposal perbaikan
             diverifikasi kelayakan fisiknya secara objektif menggunakan{" "}
-            <strong>Computer Vision</strong>, dan setiap rupiah mutasi kas
-            dikunci dengan <strong>Cryptographic Hash Chain</strong>.&quot;
+            <span className="font-bold italic">Computer Vision</span>, dan setiap rupiah mutasi kas
+            dikunci dengan <span className="font-bold italic">Cryptographic Hash Chain</span>.&quot;
           </p>
           <p className="italic">-- Peduli Masjid</p>
         </div>
@@ -112,40 +114,18 @@ export default function Home() {
           Cara Kerja
         </h3>
         <div className="w-full max-w-4xl flex flex-col">
-          {[
-            {
-              step: "Langkah 1",
-              number: 1,
-              title: "Pengajuan & Analisis Visual Otomatis",
-              description:
-                "Pengurus takmir mengunggah foto kondisi fisik bangunan masjid yang membutuhkan renovasi. Model CNN secara otomatis menganalisis pola kerusakan dan menentukan kelayakan pembukaan kampanye.",
-            },
-            {
-              step: "Langkah 2",
-              number: 2,
-              title: "Penghimpunan Donasi Aman",
-              description:
-                "Donatur menyalurkan dana untuk kampanye yang telah tervalidasi. Setiap donasi masuk dicatat langsung sebagai blok transaksi baru di dalam sistem ledger.",
-            },
-            {
-              step: "Langkah 3",
-              number: 3,
-              title: "Pencairan Dana & Audit Kriptografis",
-              description:
-                "Setiap penarikan kas untuk belanja material semen atau atap wajib menyertakan foto nota fisik. Berkas nota dan transaksi diikat ke dalam rantai hash (SHA-256) yang dapat diverifikasi mandiri oleh siapa pun.",
-            },
-          ].map((item, index, arr) => {
+          {HOW_IT_WORKS.map((item, index, arr) => {
             const isLast = index === arr.length - 1;
             return (
               <div key={item.number} className="flex items-stretch gap-8">
-                {/* Konten Kiri */}
+                {/* Kolom Langkah */}
                 <div className="flex-1 text-right pt-1.5">
-                  <span className="font-bold text-neutral-800">
+                  <span className="font-semibold text-neutral-800">
                     {item.step}
                   </span>
                 </div>
 
-                {/* Tengah: Nomor & Garis Putus-putus */}
+                {/* Nomor dan Garis-garis */}
                 <div className="flex flex-col items-center shrink-0">
                   <div className="w-10 h-10 rounded-full bg-neutral-900 text-white flex items-center justify-center font-bold text-sm shadow-sm ring-4 ring-neutral-100 shrink-0">
                     {item.number}
@@ -155,13 +135,13 @@ export default function Home() {
                   )}
                 </div>
 
-                {/* Konten Kanan: Penjelasan */}
+                {/* Kolom Penjelasan */}
                 <div
                   className={`flex-1 text-left pt-1.5 ${
                     isLast ? "pb-4" : "pb-12"
                   }`}
                 >
-                  <h4 className="font-semibold text-neutral-900">
+                  <h4 className="font-semibold text-lg text-neutral-900">
                     {item.title}
                   </h4>
                   <p className="text-neutral-600 mt-2 leading-relaxed text-sm">
@@ -179,75 +159,57 @@ export default function Home() {
         <h3 className="text-2xl font-semibold mb-12">
           Fitur Integritas
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
-          <TechnologyCard
-            badge="Computer Vision Layer"
-            icon={<ScanEye className="w-6 h-6" />}
-            title="Verifikasi Kerusakan Fisik berbasis CNN"
-            description="Mengeliminasi manipulasi proposal fiktif. Arsitektur Deep Learning mengekstraksi fitur struktural retak, keropos, atau kebocoran bangunan guna memastikan bantuan tepat sasaran."
-            keyFeatures="Deteksi multi-level kerusakan, ekstraksi fitur visual otomatis, tanpa bias manusia."
-          />
-          <TechnologyCard
-            badge="Data Integrity Layer"
-            icon={<ShieldCheck className="w-6 h-6" />}
-            title="Mutasi Kas Anti-Manipulasi (Cryptographic Hash Chain)"
-            description="Mengadopsi prinsip rantai blok ringan tanpa biaya gas fee. Mengaitkan hash transaksi sebelumnya dengan transaksi baru sehingga manipulasi data pada basis data akan otomatis memutus rantai integritas (broken chain)."
-            keyFeatures="Integritas matematis SHA-256, checksum nota pengeluaran fisik, verifikasi mandiri publik satu klik."
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+          {SHOWCASE_TECHNOLOGY.map((item) => (
+              <TechnologyCard
+                badge={item.badge}
+                icon={item.icon}
+                title={item.title}
+                description={item.description}
+                keyFeatures={item.keyFeatures}
+              />
+            ))}
         </div>
       </div>
 
       {/* Featured Campaign Active */}
-      <div id="kampanye" className="flex flex-col items-center justify-center px-30 py-16 border-b-1 border-slate-400">
-        <div className="flex items-center justify-between w-full max-w-6xl mb-12">
+      <div id="recent-campaigns" className="flex flex-col items-center justify-center px-30 py-16 border-b-1 border-slate-400">
+        <div className="flex items-end justify-between w-full max-w-6xl mb-12">
           <h3 className="text-2xl font-semibold">
-            Kampanye Aktif
+            Kampanye Terbaru
           </h3>
           <Link
             href="/campaigns"
-            className="inline-flex items-center gap-2 border border-neutral-300 bg-white hover:bg-neutral-100 text-neutral-900 font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors shadow-xs"
+            className="inline-flex items-center gap-2 text-neutral-900 text-sm transition-all hover:font-semibold"
           >
             <span>Lihat Selengkapnya</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
-          <CampaignCard
-            id="1"
-            imageSrc="/bg-masjid.jpg"
-            badgeText="Terverifikasi: Rusak Berat"
-            title="Renovasi Atap Kubah & Dinding Utama Masjid Al-Muhajirin"
-            location="Kab. Sleman, D.I. Yogyakarta"
-            collectedAmount={18500000}
-            targetAmount={35000000}
-          />
-          <CampaignCard
-            id="2"
-            imageSrc="/bg-masjid.jpeg"
-            badgeText="Terverifikasi: Rusak Sedang"
-            title="Perbaikan Struktur Menara & Tempat Wudhu Masjid Jami' An-Nur"
-            location="Kota Bandung, Jawa Barat"
-            collectedAmount={12400000}
-            targetAmount={28000000}
-          />
-          <CampaignCard
-            id="3"
-            imageSrc="/bg-masjid.jpg"
-            badgeText="Terverifikasi: Rusak Berat"
-            title="Restorasi Plafon Retak & Sanitasi Utama Masjid Baiturrahman"
-            location="Kab. Malang, Jawa Timur"
-            collectedAmount={24750000}
-            targetAmount={40000000}
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+          {DUMMY_CAMPAIGNS.slice(0, 3).map((campaign) => {
+              return (
+                <CampaignCard
+                  id={campaign.id}
+                  imageSrc={campaign.imageSrc}
+                  badgeText={campaign.badgeText}
+                  title={campaign.title}
+                  location={campaign.location}
+                  collectedAmount={campaign.collectedAmount}
+                  targetAmount={campaign.targetAmount}
+                  key={campaign.id}
+                />
+              )
+            })}
         </div>
       </div>
 
       {/* Ask for Renovation */}
-      <div id="daftar-takmir" className="flex flex-col items-center justify-center px-6 md:px-30 py-16">
-        <h3 className="text-2xl font-semibold mb-3 text-center">
+      <div id="daftar-takmir" className="flex flex-col items-center justify-center px-30 py-16 border-b-1 border-slate-400">
+        <h3 className="text-2xl font-semibold">
           Daftar Sebagai Takmir
         </h3>
-        <p className="text-sm text-neutral-500 max-w-lg text-center mb-10 leading-relaxed">
+        <p className="text-sm text-neutral-600 max-w-lg text-center mb-10 leading-relaxed">
           Daftarkan masjid Anda untuk mendapatkan verifikasi kondisi kerusakan fisik objektif dan pembukaan penggalangan dana renovasi yang akuntabel.
         </p>
         <TakmirRegistrationForm />

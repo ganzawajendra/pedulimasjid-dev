@@ -23,10 +23,7 @@ export default function CampaignCard({
   targetAmount,
   slug = "",
 }: CampaignCardProps) {
-  const percentage = Math.min(
-    100,
-    Math.round((collectedAmount / targetAmount) * 100)
-  );
+  const percentage = Math.min(100, Math.round((collectedAmount / targetAmount) * 100));
 
   const formatRupiah = (num: number) => {
     return new Intl.NumberFormat("id-ID", {
@@ -48,7 +45,7 @@ export default function CampaignCard({
           fill
           className="object-cover object-center hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1.5 border border-white/20">
+        <div className="absolute top-3 right-0 bg-black/75 backdrop-blur-sm text-white text-xs px-2.5 py-1 flex items-center gap-1.5 border border-white/20">
           <Check className="w-3.5 h-3.5 text-green-400" />
           <span>{badgeText}</span>
         </div>
@@ -58,11 +55,11 @@ export default function CampaignCard({
       <div className="p-5 flex flex-col flex-1 justify-between">
         <div>
           {location && (
-            <p className="text-xs text-neutral-500 font-medium mb-1">
+            <p className="text-xs text-neutral-600 mb-1">
               {location}
             </p>
           )}
-          <h4 className="text-base font-semibold text-neutral-900 line-clamp-2 mb-4 leading-snug">
+          <h4 className="text-lg font-semibold text-neutral-900 line-clamp-2 mb-4 leading-snug">
             {title}
           </h4>
 
@@ -74,7 +71,7 @@ export default function CampaignCard({
                 style={{ width: `${percentage}%` }}
               />
             </div>
-            <div className="flex justify-between items-center text-xs">
+            <div className="flex justify-between items-center text-sm">
               <span className="font-semibold text-neutral-900">
                 {formatRupiah(collectedAmount)}
               </span>
@@ -89,7 +86,7 @@ export default function CampaignCard({
         <div className="flex items-center gap-2 pt-2 border-t border-neutral-200">
           <Link
             href={campaignId ? `/campaigns/${campaignId}` : "/campaigns"}
-            className="flex-1 bg-black text-white text-xs font-medium py-2.5 px-3 rounded-md text-center hover:bg-neutral-800 transition-colors"
+            className="flex-1 bg-black text-white text-xs font-semibold py-2.5 px-3 rounded-md text-center hover:bg-neutral-800 transition-colors"
           >
             Beri Donasi
           </Link>
