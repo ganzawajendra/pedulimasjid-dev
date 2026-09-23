@@ -62,7 +62,7 @@ export default function CampaignDetail({ params }: PageProps) {
   };
 
   return (
-    <div className="pt-24 px-6 md:px-12 lg:px-30 pb-20 min-h-screen bg-neutral-50/50">
+    <div className="pt-24 px-6 md:px-12 lg:px-30 pb-20 min-h-screen">
       {/* Breadcrumb sederhana */}
       <nav className="flex items-center gap-2 text-xs text-neutral-500 mb-6">
         <Link href="/" className="hover:text-neutral-900 transition-colors">
@@ -73,21 +73,19 @@ export default function CampaignDetail({ params }: PageProps) {
           href="/campaigns"
           className="hover:text-neutral-900 transition-colors"
         >
-          Daftar Kampanye
+          Kampanye
         </Link>
         <span>/</span>
         <span className="text-neutral-900 font-medium truncate max-w-xs">
-          Renovasi Masjid Al-Muhajirin
+          Renovasi Atap Kubah & Dinding Utama Masjid Al-Muhajirin
         </span>
       </nav>
 
-      {/* Kontainer 2 Kolom (~65% kiri & ~35% kanan) */}
+      {/* 2 Kolom (~65% kiri & ~35% kanan) */}
       <div className="flex flex-col lg:flex-row gap-10 items-start">
-        {/* ======================================================== */}
-        {/* 1. KOLOM KIRI (~65% Width) */}
-        {/* ======================================================== */}
+        {/* KOLOM KIRI (~65% Width) */}
         <div className="w-full lg:w-[65%] space-y-8">
-          {/* A. Header Kampanye & Tag Lokasi */}
+          {/* Header Kampanye & Tag Lokasi */}
           <div className="space-y-3">
             <h1 className="text-2xl md:text-3xl font-bold text-neutral-900 leading-tight">
               Renovasi Atap Kubah & Dinding Utama Masjid Al-Muhajirin

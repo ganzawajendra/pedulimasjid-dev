@@ -76,7 +76,7 @@ export default function Campaign() {
   return (
     <div className="pt-24 px-6 md:px-12 lg:px-30 pb-20 min-h-screen">
       <div className="mb-8">
-        <h1 className="text-3xl font-semibold text-neutral-900 mb-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-neutral-900 leading-tight">
           Daftar Rumah Ibadah Terverifikasi
         </h1>
         <p className="text-neutral-600 max-w-3xl text-sm leading-relaxed">
