@@ -3,6 +3,7 @@
 import { use, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   MapPin,
@@ -82,6 +83,8 @@ const PAYMENT_METHODS = [
 export default function DonatePage({ params }: PageProps) {
   const resolvedParams = use(params);
   const campaignId = resolvedParams.id;
+
+  const router = useRouter();
 
   // State Donasi
   const [selectedPreset, setSelectedPreset] = useState<number | null>(100000);
@@ -532,11 +535,9 @@ export default function DonatePage({ params }: PageProps) {
             disabled={!isAmountValid}
             onClick={() => {
               if (isAmountValid) {
-                alert(
-                  `Donasi sejumlah ${formatRupiah(currentAmount)} dengan metode ${
-                    PAYMENT_METHODS.find((m) => m.id === paymentMethod)?.name
-                  } atas nama ${donorName || "Hamba Allah"} berhasil diproses!`
-                );
+                const randomHex = Math.random().toString(16).substring(2, 8).toUpperCase();
+                const dummyTxId = `TX-${Date.now().toString().slice(-4)}${randomHex}`;
+                router.push(`/campaigns/${campaignId}/donate/success?tx=${dummyTxId}`);
               }
             }}
             className={`w-full py-4 px-6 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 transition-all shadow-sm ${
