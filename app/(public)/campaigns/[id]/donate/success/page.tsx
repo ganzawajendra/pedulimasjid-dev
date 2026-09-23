@@ -206,7 +206,7 @@ function SuccessContent({ campaignId }: { campaignId: string }) {
       <div className="space-y-3 pt-2">
         {/* Tombol Primer */}
         <Link
-          href={`/campaigns/${campaignId}/audit`}
+          href={`/audit/${campaignId}`}
           className="w-full bg-black text-white text-sm font-semibold py-3.5 px-5 rounded-2xl flex items-center justify-center gap-2 hover:bg-neutral-800 transition-colors shadow-xs"
         >
           <span>Periksa Rantai Hash di Halaman Audit</span>

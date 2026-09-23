@@ -326,7 +326,7 @@ export default function CampaignDetail({ params }: PageProps) {
 
             <div className="pt-2 flex justify-end">
               <Link
-                href={`/campaigns/${campaignId}/audit`}
+                href={`/audit/${campaignId}`}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-900 hover:text-neutral-600 transition-colors"
               >
                 <span>Lihat seluruh Nota Belanja & Audit Mutasi</span>

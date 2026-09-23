@@ -94,7 +94,7 @@ export default function CampaignCard({
             Beri Donasi
           </Link>
           <Link
-            href={campaignId ? `/campaigns/${campaignId}/audit` : "#audit"}
+            href={campaignId ? `/audit/${campaignId}` : "#audit"}
             className="flex-1 border border-neutral-300 bg-white text-neutral-800 text-xs font-medium py-2.5 px-3 rounded-md text-center hover:bg-neutral-100 transition-colors"
           >
             Lihat Audit Mutasi
