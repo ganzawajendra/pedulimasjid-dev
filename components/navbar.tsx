@@ -76,8 +76,10 @@ export default function Navbar() {
           Fitur Integritas
         </Link>
         <Link
-          href={isHomePage ? "#audit" : "/#audit"}
-          className="hover:text-black transition-colors"
+          href="/audit"
+          className={`hover:text-black transition-colors ${
+            pathname.startsWith("/audit") ? "text-black font-semibold" : ""
+          }`}
         >
           Audit &amp; Transparansi
         </Link>
